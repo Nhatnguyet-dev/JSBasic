@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉ số BMI</title>
+    <script>
+        let kg = Number(prompt("Bạn nặng bao nhiêu kg? "));
+        let m = Number(prompt("Bạn cao bao nhiêu (m)?"));
+        let bmi = kg/Math.pow(m,2);
+        if (bmi <= 18.5){
+            alert("Bạn thiếu cân rồi.")
+        } else if (bmi <=24.99){
+            alert("Bạn có cân nặng bình thường");
+        } else if (bmi<=29.99){
+            alert("Bạn đang thừa cân rồi.")
+        } else alert("Bạn đang bị béo phì rồi.");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

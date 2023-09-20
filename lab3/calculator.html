@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 id="ahihi">Máy tính</h1>
+    <div class="grid-container">
+        <div class="grid-item" id="num_7" onclick="layso('num_7')">7</div>
+        <div class="grid-item" id="num_8" onclick="layso(`num_8`)">8</div>
+        <div class="grid-item" id="num_9" onclick="layso(`num_9`)">9</div>
+        <div class="grid-item" id="v+" onclick="dau(`v+`)">+</div>
+        <div class="grid-item" id="num_4" onclick="layso('num_5')">4</div>
+        <div class="grid-item" id="num_5" onclick="layso('num_5')">5</div>
+        <div class="grid-item" id="num_6" onclick="layso('num_6')">6</div>
+        <div class="grid-item" id="v-" onclick="dau(`v-`)">-</div>
+        <div class="grid-item" id="num_1" onclick="layso('num_1')">1</div>
+        <div class="grid-item" id="num_2" onclick="layso('num_2')">2</div>
+        <div class="grid-item" id="num_3" onclick="layso('num_3')">3</div>
+        <div class="grid-item" id="vx" onclick="dau(`vx`)">x</div>
+        <div class="grid-item" id="num_0" onclick="layso('num_0')">0</div>
+        <div class="grid-item" id="vC" onclick ="clearhistory()">C</div>
+        <div class="grid-item" id="v="onclick="ketqua()">=</div>
+        <div class="grid-item" id="v:" onclick="dau(`v:`)">/</div>
+    </div>
+      <address>Nhật Nguyệt (also <a href="https://github.com/Nhatnguyet-dev">Chocodark</a>)</address>
+      <script type="text/javascript">
+        // mới tính được a + b / c = (a+b)/c, nhấn dấu bằng là hiện thị ra màn hình rồi result = 0
+        let namename;
+        let result = 0;
+        let history = [];
+        var a,x;
+        //console.log(history);
+        function layso(namename){
+            let num = document.getElementById(namename);
+            if (history.length == 0){
+               result += Number(num.innerHTML);
+            } else {a = Number(num.innerHTML); }
+            history.push(Number(num.innerHTML));
+            //console.log("Mới ấn số xong",result);
+            console.log(history);
+            if (a != NaN){
+                switch (x){
+                    case "x":
+                        result *=a;
+                        break;
+                    case "/":
+                        result /=a;
+                        break;
+                    case "-":
+                        result -=a;
+                        break;
+                    case "+":
+                        result +=a;
+                        break;
+                }
+            }
+        }
+        function dau(namename){
+            let num = document.getElementById(namename);
+            x = num.innerHTML;
+            //console.log(x);
+        }
+        function ketqua(){
+            //console.log("Mới ấn dấu bằng xong",result);
+            //console.log(history);
+            alert(result);
+            result = 0;
+            history.splice(0,history.length);
+        }
+        function clearhistory(){
+            history.splice(0,history.length);
+            result = 0;
+            //console.log(result,history);
+        }
+      </script>
+</body>
+</html>
