@@ -120,12 +120,12 @@
         const op1 = ["*","/"];
         const number = ['1','2','3','4','5','6','7','8','9','0'];
         // hàm lấy giá trị nút và in ra màn hình
+        let ord = history.length;
         function getValue(namename){
-            let ord = history.length;
+            ord = history.length;
             let num = document.getElementById(namename);
             let b = document.getElementById(`screen`);
             let c = num.innerHTML;
-            
             // hiển thị trên màn hình
             let a = b.innerHTML;
             // nếu bên trong màn hình có dấu xuống dòng thì có 2 trường hợp
@@ -134,8 +134,8 @@
             if (a.indexOf(`<br>`) != -1){
                 if (number.indexOf(c) != -1){
                     clearhistory();
-                    b.innerHTML += c;
                     history.push(c);
+                    b.innerHTML += c;
                     ord++;
                 }
                 if (operators.indexOf(c) != -1){
@@ -232,9 +232,10 @@
                             break;
                         case "/":
                             let dive = history[index-1] / history[index+1];
-                            console.log(dive.toFixed(3));
-                            result = dive.toFixed(3) + result;
-                            console.log(result);
+                            //console.log(dive.toFixed(3));
+                            //result += Number(dive.toFixed(3));
+                            console.log(dive);
+                            result += Number(printfloat(dive));
                             history.splice(index-1,3,result);
                             break;
                     }
@@ -265,17 +266,35 @@
             // gán giá trị cuối cùng của mảng history vào biến result để hiện thị ra màn hình
             result = history[0];
             // kiểm tra số nguyên hay số float
-            if(isInt(result) == false){
-                num.innerHTML += "<br>" + result.toFixed(3);
-                history[0] = String(result.toFixed(3));
-            } else { num.innerHTML += "<br>"+result; history[0] = String(result);}
+            //if(isInt(result) == false){
+            //    num.innerHTML += "<br>" + result.toFixed(3);
+            //    history[0] = String(result.toFixed(3));
+            //} else { num.innerHTML += "<br>"+result; history[0] = String(result);}
             //đưa về str để thực hiện phép toán tiếp theo nếu user có nhu cầu      
+            num.innerHTML += "<br>" + result;
+            history[0] = String(result);
             console.log(history);
         }
         // hàm kiểm tra có phải số int hay float, trả về giá trị true / false
         function isInt(n) {
             return n % 1 === 0;
          }
+        function printfloat(n){
+            let b = count(n);
+            if (b<=3){
+                console.log(n);
+                return n;
+            } else {
+                return n = Math.round(n,4);
+            }
+        } 
+        function count(numb) {
+            if (Number.isInteger(numb)) {
+                return 0;
+            } else {
+                return numb.toString().split('.')[1].length;
+            }
+        }
     </script>
 </body>
 </html>
