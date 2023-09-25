@@ -10,10 +10,10 @@ for (let x = 2 ; x < list.length ; x++){
     ten += list[x] + " ";
 }
 console.log("Họ: ",ho,"\nĐệm: ",dem,"\nTên: ",ten);
-// gioitinh = gioitinh.toLowerCase();
+gioitinh = gioitinh.toLowerCase();
 // xử lý giới tính
 // tại sao khi đưa gioitinh.toLowerCase() vào cụm else if thì bị lỗi?
-if (gioitinh.toLocaleLowerCase() == "nữ"){
+if (gioitinh == "nữ"){
     dem = "Vẽ"
 } else if (gioitinh == "nam"){
     dem = "Văn"

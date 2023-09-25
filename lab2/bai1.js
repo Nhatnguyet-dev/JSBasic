@@ -4,16 +4,14 @@ let b = Number(prompt("b = "));
 let c = Number(prompt("c = "));
 // khi a ==0, giải phương trình bậc 1
 if (a==0){
-    if (b==0){
-        if( c==0){
+    if (c ==0){
+        if (b==0){
             alert("Phương trình có vô số nghiệm.");
-        } else { alert("Phương trình vô nghiệm");}
+        } else {alert("Phương trình vô nghiệm")}
     } else {
-        if(c==0){
+        if (b==0){
             alert("Nghiệm: x = 0");
-        } else{
-            alert("Nghiệm x = "+(-c/b));
-        }
+        } else { alert("Nghiệm x = "+(-b/c))}
     }
 }
 if (a!=0){
