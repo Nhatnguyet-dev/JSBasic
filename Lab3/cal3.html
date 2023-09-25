@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator bản nâng cấp</title>
     <!-- <link rel="stylesheet" href="stylenc.css"> -->
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <style>
         *{
             font-family: monospace;
@@ -75,8 +76,7 @@
     <div class="calculator">
         <div class="scrr">
             <p id="screen"></p>
-        </div>
-        
+        </div>    
     <div>
         <button class="smth" id="AC" onclick="clearhistory()">AC</button>
         <button class="smth" id="DEL" onclick="deleter()">DEL</button>
@@ -107,28 +107,44 @@
         <button id="." onclick="getValue(`.`)">.</button>
         <button class="result" id="=" onclick="results()">=</button>
     </div>
+    <!-- chỉnh lại cách điều hướng link bằng js -->
     <address>Nhật Nguyệt (<a href="https://github.com/Nhatnguyet-dev">Coder</a>)</address>
     <address>Hanni (<a href="https://www.facebook.com/nguyenbuingochan1411">Designer</a>)</address>
     </div>
     <script> 
+        // khai báo biến
         let namename;
         let history = [];
-
+        // khai báo chữ số và phép toàn cùng phép toán ưu tiên
         const operators = ["+","-","*","/"];
+        const op1 = ["*","/"];
         const number = ['1','2','3','4','5','6','7','8','9','0'];
-        let ord = history.length;
+        // hàm lấy giá trị nút và in ra màn hình
         function getValue(namename){
+            let ord = history.length;
             let num = document.getElementById(namename);
             let b = document.getElementById(`screen`);
             let c = num.innerHTML;
-            history.push(c);
-            ord++;
+            
             // hiển thị trên màn hình
             let a = b.innerHTML;
+            // nếu bên trong màn hình có dấu xuống dòng thì có 2 trường hợp
+            // th1: c là 1 số thì sẽ thực hiện phép tính mới
+            // th2: là 1 dấu thì sẽ thêm số đó vào
             if (a.indexOf(`<br>`) != -1){
-                b.innerHTML = ""+ history.join("");
-            } else {b.innerHTML += c;}
-            // đưa các chữ số thêm vào thành 1 số
+                if (number.indexOf(c) != -1){
+                    clearhistory();
+                    b.innerHTML += c;
+                    history.push(c);
+                    ord++;
+                }
+                if (operators.indexOf(c) != -1){
+                    history.push(c);
+                    b.innerHTML = ""+ history.join("");
+                    ord++;
+                }
+            } else {b.innerHTML += c;history.push(c);ord++;}
+            // kiểm tra xem phần tử phía trước nó có phải là số hay không để thêm vào
             if (ord != 1){
                 if (operators.indexOf(history[ord-2]) == -1){
                     if (operators.indexOf(c) == -1){
@@ -141,8 +157,8 @@
             }
             //kiểm tra trong mảng gồm phần tử nào
             console.log(history);
-            
         }
+        // hàm xóa toàn bộ lịch sử màn hình
         function clearhistory(){
             let num = document.getElementById(`screen`);
             num.innerHTML = " ";
@@ -150,6 +166,7 @@
             ord =0;
             console.log(history);
         }
+        // hàm xóa 1 chữ số
         function deleter(){
             let num = document.getElementById(`screen`);
             let element = history[history.length-1];
@@ -159,35 +176,57 @@
             num.innerHTML = history.join("");
         }
         function results(){
+            let num = document.getElementById(`screen`);
+            // kiểm tra nếu trong mảng chỉ còn 1 phần tử thì ấn dấu bằng sẽ in ra phần tử đó 
             if(history.length == 1){
-                num.innerHTML += "<br>"+history[0];
+                if (num.innerHTML.indexOf("<br>") != -1){
+                    num.innerHTML = history[0];
+                } else{
+                    num.innerHTML += "<br>" +history[0];
+                }
                 exit;
             }
+            // khai báo biến kết quả
             let result = 0;
+            // chuyển đổi các phần tử trong mảng thành số
             for (let index = 0; index < history.length; index++){
                 if (operators.indexOf(history[index]) == -1){
                     history[index] = Number(history[index]);
                 }
             }
+            console.log(history);
+            //thực hiện phép nhân chia trước
+            // vấn đề cần giải quyết ở đây là việc nhân chia 2 số sẽ khác với nhân chia 3 số
             for (let index = 0; index < history.length; index++){
-                if (operators.indexOf(history[index]) != -1){
-                    switch(history[index]){
-                        case "*":
-                            result += history[index-1] * history[index+1];
-                            history.splice(index-1,3,result);
-                            console.log(result);
+                let demo = history[index];
+                let demo1 = history[index+2];
+                if (op1.indexOf(demo) != -1 && op1.indexOf(demo1) != -1){
+                    switch (true){
+                        case (demo == "*" && demo1 =="/"):
+                            result += history[index-1] * history[index+1] / history[index+3];
+                            history.splice(index-1,5,result);
                             break;
-                        case "/":
-                            let dive = history[index-1] / history[index+1];
-                            console.log(dive.toFixed(2));
-                            result = dive.toFixed(2) + result;
-                            console.log(result);
-                            history.splice(index-1,3,result);
+                        case (demo == "*" && demo1 =="*"):
+                            result += history[index-1] * history[index+1]*history[index+3];   
+                            history.splice(index-1,5,result);
+                            break;
+                        case (demo == "/" && demo1 =="/"):
+                            result += history[index-1] / history[index+1] / history[index+3];
+                            history.splice(index-1,5,result);
+                            break;
+                        case (demo == "/" && demo1 =="*"):
+                            result += history[index-1] / history[index+1] * history[index+3];
+                            history.splice(index-1,5,result);
                             break;
                     }
+                    index = 0;
+                    result = 0;
                 }
             }
+            console.log(history)
+            // gán lại giá trị result để làm biến tạm chứa giá trị của phép vừa tính toán xong
             result = 0;
+            //thực hiện phép cộng trừ từ trái sang phải hay là từ vị trí 0-> vị trí cuối
             for (let index = 0; index < history.length; index++){
                 if (operators.indexOf(history[index]) != -1){
                     switch(history[index]){
@@ -200,31 +239,21 @@
                             history.splice(index-1,3,result);
                             break;
                     }
+                    index = 0;
+                    result = 0;
                 }
             }
+            // gán giá trị cuối cùng của mảng history vào biến result để hiện thị ra màn hình
             result = history[0];
-            let num = document.getElementById(`screen`);
-            // hiển thị số
             // kiểm tra số nguyên hay số float
-            console.log(isInt(result));
             if(isInt(result) == false){
-                //num.innerHTML += result.toFixed(3);
                 num.innerHTML += "<br>" + result.toFixed(3);
-            } else { num.innerHTML += "<br>"+result;}
-            //đưa về str
-            history[0] = String(result);
-            result = 0;
-            
+                history[0] = String(result.toFixed(3));
+            } else { num.innerHTML += "<br>"+result; history[0] = String(result);}
+            //đưa về str để thực hiện phép toán tiếp theo nếu user có nhu cầu      
             console.log(history);
         }
-        function test(){
-            let num = document.getElementById(`screen`);
-            
-            console.log(a);
-            if (a.indexOf(`<br>`) != -1){
-                num.innerHTML = ""+ history.join("");
-            }
-        }
+        // hàm kiểm tra có phải số int hay float, trả về giá trị true / false
         function isInt(n) {
             return n % 1 === 0;
          }
