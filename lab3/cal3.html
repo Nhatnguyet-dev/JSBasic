@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator bản nâng cấp</title>
-    <!-- <link rel="stylesheet" href="stylenc.css"> -->
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <style>
         *{
@@ -34,7 +33,6 @@
         }
         
         p{
-            /* margin: 30px 10px; */
             margin: 0px 10px;
             height: 90px;
             text-align: right;
@@ -68,7 +66,13 @@
         }
         address{
             text-align: center;
-            color: white;
+            color: #e350a8;
+        }
+        a{
+            color: #b8e7ea;
+        }
+        a:hover{
+            color: #e350a8;
         }
     </style>
 </head>
@@ -107,9 +111,8 @@
         <button id="." onclick="getValue(`.`)">.</button>
         <button class="result" id="=" onclick="results()">=</button>
     </div>
-    <!-- chỉnh lại cách điều hướng link bằng js -->
-    <address>Nhật Nguyệt (<a href="https://github.com/Nhatnguyet-dev">Coder</a>)</address>
-    <address>Hanni (<a href="https://www.facebook.com/nguyenbuingochan1411">Designer</a>)</address>
+    <address>Nhật Nguyệt (<a href="https://github.com/Nhatnguyet-dev" target="_blank">Coder</a>)</address>
+    <address>Hanni (<a href="https://www.facebook.com/nguyenbuingochan1411" target="_blank">Designer</a>)</address>
     </div>
     <script> 
         // khai báo biến
@@ -171,7 +174,10 @@
             let num = document.getElementById(`screen`);
             let element = history[history.length-1];
             let e = element.substring(0,element.length - 1);
-            history.splice(history.length -1,1,e);
+            // xóa phần tử khi mà khi '+'-> ''
+            if (e.length == 0){
+                history.pop();
+            } else {history.splice(history.length -1,1,e);}
             console.log(history);
             num.innerHTML = history.join("");
         }
@@ -185,7 +191,7 @@
                 } else{
                     num.innerHTML += "<br>" +history[0];
                 }
-                exit;
+                return;
             }
             // chuyển đổi các phần tử trong mảng thành số
             for (let index = 0; index < history.length; index++){
@@ -194,48 +200,49 @@
                 }
             }
             console.log(history);
-            //thực hiện phép nhân chia trước
-            // vấn đề cần giải quyết ở đây là việc nhân chia 2 số sẽ khác với nhân chia 3 số
+            //thực hiện phép nhân chia 3 số trước rồi mới kiểm tra thực hiện nhân chia 2 số
             for (let index = 0; index < history.length; index++){
                 let demo = history[index];
-                let demo1 = history[index+2];
                 let so = 0;
-                if (op1.indexOf(demo) != -1 && op1.indexOf(demo1) != -1){
-                    so = 1;
-                    switch (true){
-                        case (demo == "*" && demo1 =="/"):
-                            result += history[index-1] * history[index+1] / history[index+3];
-                            history.splice(index-1,5,result);
-                            break;
-                        case (demo == "*" && demo1 =="*"):
-                            result += history[index-1] * history[index+1]*history[index+3];   
-                            history.splice(index-1,5,result);
-                            break;
-                        case (demo == "/" && demo1 =="/"):
-                            result += history[index-1] / history[index+1] / history[index+3];
-                            history.splice(index-1,5,result);
-                            break;
-                        case (demo == "/" && demo1 =="*"):
-                            result += history[index-1] / history[index+1] * history[index+3];
-                            history.splice(index-1,5,result);
-                            break;
+                if (index+2 <history.index){
+                    let demo1 = history[index+2];
+                    let dem = 0;
+                    if (op1.indexOf(demo) != -1 && op1.indexOf(demo1) != -1){
+                        so = 1;
+                        switch (true){
+                            case (demo == "*" && demo1 =="/"):
+                                demo = history[index-1] * history[index+1] / history[index+3];
+                                result += printfloat(demo);
+                                history.splice(index-1,5,result);
+                                break;
+                            case (demo == "*" && demo1 =="*"):
+                                result += history[index-1] * history[index+1]*history[index+3];   
+                                history.splice(index-1,5,result);
+                                break;
+                            case (demo == "/" && demo1 =="/"):
+                                dem = history[index-1] / history[index+1] / history[index+3];
+                                result += printfloat(dem);
+                                history.splice(index-1,5,result);
+                                break;
+                            case (demo == "/" && demo1 =="*"):
+                                dem = history[index-1] / history[index+1] * history[index+3];
+                                result+= printfloat(dem);
+                                history.splice(index-1,5,result);
+                                break;
+                        }
+                        index = 0;
+                        result = 0;
                     }
-                    index = 0;
-                    result = 0;
                 }
-                if ((op1.indexOf(demo) != -1 || op1.indexOf(demo1) != -1) && so==0){
+                if (op1.indexOf(demo) != -1 && so==0){
                     switch(history[index]){
                         case "*":
                             result += history[index-1] * history[index+1];
                             history.splice(index-1,3,result);
-                            console.log(result);
                             break;
                         case "/":
                             let dive = history[index-1] / history[index+1];
-                            //console.log(dive.toFixed(3));
-                            //result += Number(dive.toFixed(3));
-                            console.log(dive);
-                            result += Number(printfloat(dive));
+                            result += printfloat(dive);
                             history.splice(index-1,3,result);
                             break;
                     }
@@ -244,8 +251,6 @@
                 }
             }
             console.log(history)
-            // gán lại giá trị result để làm biến tạm chứa giá trị của phép vừa tính toán xong
-            //result = 0;
             //thực hiện phép cộng trừ từ trái sang phải hay là từ vị trí 0-> vị trí cuối
             for (let index = 0; index < history.length; index++){
                 if (operators.indexOf(history[index]) != -1){
@@ -265,29 +270,22 @@
             }
             // gán giá trị cuối cùng của mảng history vào biến result để hiện thị ra màn hình
             result = history[0];
-            // kiểm tra số nguyên hay số float
-            //if(isInt(result) == false){
-            //    num.innerHTML += "<br>" + result.toFixed(3);
-            //    history[0] = String(result.toFixed(3));
-            //} else { num.innerHTML += "<br>"+result; history[0] = String(result);}
             //đưa về str để thực hiện phép toán tiếp theo nếu user có nhu cầu      
             num.innerHTML += "<br>" + result;
             history[0] = String(result);
             console.log(history);
         }
-        // hàm kiểm tra có phải số int hay float, trả về giá trị true / false
-        function isInt(n) {
-            return n % 1 === 0;
-         }
+        //hàm in ra số float với tối đa 3 chữ số sau dấu decimal
         function printfloat(n){
             let b = count(n);
             if (b<=3){
-                console.log(n);
                 return n;
             } else {
-                return n = Math.round(n,4);
+                return n = Number(n.toPrecision(4));
             }
         } 
+        // hàm kiểm tra có phải số nguyên
+        // trả về số chữ số sau dấu chấm
         function count(numb) {
             if (Number.isInteger(numb)) {
                 return 0;
