@@ -29,7 +29,7 @@
             background:
                 linear-gradient(180deg,#21244D,#21244D,#21244D) padding-box,
                 linear-gradient(180deg,#21244D,#9543a7) border-box;
-            background-color: #21244D;
+            /*background-color: #21244D;*/
         }
         
         p{
@@ -50,6 +50,7 @@
         }
         button{
             border: none;
+            text-align: center;
             background-color: transparent;
             height: 60px;
             width: 60px;
@@ -74,6 +75,16 @@
         a:hover{
             color: #e350a8;
         }
+        @media screen and (max-width: 240px) {
+            body{
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            button {
+              background-repeat: no-repeat;
+              color: red;
+            }
+          }
     </style>
 </head>
 <body>
