@@ -75,6 +75,7 @@
         a:hover{
             color: #e350a8;
         }
+        /*viết responsive cho web T.T quên mất đoạn này rồi trừi ưi*/
         @media screen and (max-width: 240px) {
             body{
                 background-repeat: no-repeat;
@@ -145,6 +146,12 @@
             // nếu bên trong màn hình có dấu xuống dòng thì có 2 trường hợp
             // th1: c là 1 số thì sẽ thực hiện phép tính mới
             // th2: là 1 dấu thì sẽ thêm số đó vào
+            if (operators.indexOf(c) != -1){
+                if(operators.indexOf(history[ord-1])!= -1){
+                    alert("Không được phép ấn phép tính này hai lần liên tiếp!!!");
+                    return;
+                }
+            }
             if (a.indexOf(`<br>`) != -1){
                 if (number.indexOf(c) != -1){
                     clearhistory();
