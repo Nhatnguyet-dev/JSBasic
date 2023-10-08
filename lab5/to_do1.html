@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+    <style>
+        @font-face {
+            font-family: 'Playfair_Display';
+            font-style: normal;
+            font-weight: 400;
+            src: url(Playfair_Display.zip) format('zip');
+        }
+        *{
+            font-family: 'Playfair_Display';
+        }
+        html{
+            background-image: linear-gradient(45deg,#b6ddda,#01877a);
+            color: #13313d;
+        }
+        body{
+            height: 100vh;
+        }    
+        div.container{           
+            width: 90%;  
+            margin: 0px auto;         
+            display: flex;
+            flex-direction: column;
+        }
+        h1{
+            text-align: center;
+        }
+        div.addtodo{
+            display: flex;
+            margin: 0px auto;
+            flex-direction: column;
+            justify-content: center;
+        }
+        input#ten{
+            min-width: 270px;
+            max-width: 600px;
+            margin: 10px 0px;
+            border: none;
+            box-shadow: 4px 8px 16px 0 rgba(29, 29, 29, 0.2), 10px 6px 20px 0 rgba(0,0,0,0.19);
+            border-radius: 5px;
+            height: 30px;
+        }
+        textarea#des{
+            margin: 10px 0px;
+            border: none;   
+            box-shadow: 4px 8px 16px 0 rgba(29, 29, 29, 0.2), 10px 6px 20px 0 rgba(0,0,0,0.19);
+            border-radius: 5px;
+        }
+        div.list{
+            margin: 0px auto;
+            min-width: 270px;
+            max-width: 600px;
+        }
+        div.btn{
+            display: flex;
+            justify-content: right;
+        }
+        button#add{
+            width: 60px;
+            height: 22px;
+            border: 1px solid #ffb0a9;
+            background-color: #ffb0a9;
+            color: #13313d;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .detail{
+            display: flex;
+            min-height: 90px;
+            border: 2px solid #f9d678;
+            background-color: #f9d678;
+            border-radius: 10px;
+            align-items: baseline;
+            padding: 5px 14px;
+            margin-bottom: 15px; 
+        }
+        .todo{
+            flex-grow: 1;
+            flex-basis: 10%;
+        }
+        .p1{
+            margin: 0px 15px;
+            flex-grow: 4;
+            flex-basis: 40%;
+        }
+        .ten_todo{
+            font-weight: bold;
+            font-size: large;
+        }
+        .icon{
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 16px;
+            margin: 10px 0px;
+        }
+        li{
+            list-style: none;
+            justify-self: flex-end;
+        }
+        .special{
+            width: 16px;
+            height: 20px;
+        }
+        .cross{
+            color: rgba(0, 0, 0, 0.548);
+            text-decoration-line:line-through;
+        }
+        #overlay {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #000000db;
+            display: none;
+        }
+        #popup{
+            background: #f9d678;
+            border: 2px solid black;
+            border-radius: 15px;
+            position: fixed;
+            width: 300px;
+            height: 200px;
+            padding: 40px;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        } 
+        .decor{
+            width: 200px;
+            max-width: 600px;
+            height: 25px;
+            border-radius: 10px;
+            margin: 5px 0px;
+        }
+        h3.h3_pre{
+            margin: 5px auto;
+        }
+        div#noti{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            font-style: italic;
+        }
+        .bt{
+            border: 1px solid #13313d;
+            height: 25px;
+            border-radius: 10px;
+            margin-right: 10px;
+            background-color: #13313d;
+            color: #ffb0a9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TO-DO LIST</h1>
+        <div class="addtodo">
+            <input type="text" id="ten" placeholder="Tên task" required>
+            <textarea type="text" id="des" placeholder="Mô tả task" rows="3" required></textarea>
+        </div>
+        
+        <div class="list">
+            <div class="btn">
+                <button id="add" type="submit">ADD</button>
+            </div>
+            <h3>Danh sách To-do list</h3>
+            <!-- <div class="detail">
+                <i id="todo" class="fa-regular fa-circle"></i>
+                <div class="part1">
+                    <p id="tentodo">Task 1</p>
+                    <p class="motatask">Làm bài tập trên lớp</p>
+                </div>
+                <div class="icon">
+                    <i class="edit fa-regular fa-pen-to-square"></i>
+                    <i class="delete fa-solid fa-xmark"></i>
+                </div>
+            </div> -->
+        </div>
+        <div id="overlay">
+            <div id="popup">
+            </div>
+        </div>
+        <div id="noti">
+            <p>Hiện tại&nbsp;</p>
+            <p class="count">không có</p>
+            <p>&nbsp;to do list</p>
+        </div>
+    </div>
+    <script>
+        // nó chỉ tồn tại trong khoảng thời gian mà người dùng chưa reload trang
+        const list = document.getElementsByClassName("list")[0];
+        const ten_int = document.getElementById("ten");
+        const mo_ta = document.getElementById("des");
+        const count = document.getElementsByClassName("count")[0];
+
+        function todo(name,description){
+            this.name = name;
+            this.description = description;
+        }
+        let list_todo = [];
+        // hàm kiểm tra ô tên/ miêu tả đã nhập chưa
+        const checkValue = () =>{
+            let ten = ten_int.value;
+            let des = mo_ta.value;
+
+            if (ten==""){
+                alert("Bạn chưa điền tên to-do!");
+                return false;
+            }
+            if (des ==""){
+                alert("Bạn chưa điền mô tả to-do!");
+                return false;
+            }
+            if(ten.length<=5){
+                alert("Tên todo ngắn quá!");
+                return false;
+            }
+            if(des.length<=20){
+                alert("Bạn miêu tả quá ít!");
+                return fasle;
+            }
+            return true;
+        }
+        // hàm xóa mọi thông tin sau khi nhấn nút add
+        const del = () => {
+            ten_int.value = "";
+            mo_ta.value = "";
+        }
+        // tạo mới một to-do list kèm các event listener
+        const add = (name, description)=>{
+            let a = new todo(name,description);
+            list_todo.push(a);
+            console.log(list_todo);
+
+            let detail = document.createElement("div");
+            detail.setAttribute("class","detail");
+            list.appendChild(detail);
+
+            let ic1 = document.createElement("i");
+            ic1.setAttribute("class", "fa-regular fa-circle");
+            detail.appendChild(ic1);
+
+            let p1 = document.createElement("div");
+            p1.setAttribute("class","p1");
+            detail.appendChild(p1);
+
+            let p2 = document.createElement("p");
+            let ten_todo = document.createTextNode(name);
+            p2.appendChild(ten_todo);
+            p2.setAttribute("class","ten_todo");
+            p1.appendChild(p2);
+
+            let p3 = document.createElement("p");
+            let mo_ta = document.createTextNode(description);
+            p3.appendChild(mo_ta);
+            p3.setAttribute("class","motatask");
+            p1.appendChild(p3);
+
+            let p4 = document.createElement("div");
+            p4.setAttribute("class","icon");
+            detail.appendChild(p4);
+
+            let li1 = document.createElement("li");
+            let ic2 = document.createElement("i");
+            ic2.setAttribute("class","fa-regular fa-pen-to-square");
+            li1.appendChild(ic2);
+            p4.appendChild(li1);
+
+            let li3 = document.createElement("li");
+            li3.setAttribute("class","special");
+            p4.appendChild(li3);
+
+            let li2 = document.createElement("li");
+            let ic3 = document.createElement("i");
+            ic3.setAttribute("class","fa-solid fa-xmark del");
+            li2.appendChild(ic3);
+            p4.appendChild(li2);
+
+            // set sự kiện cho nút thông báo số to-do list đang làm
+            count.innerText = "đang có "+ list_todo.length;
+
+            //set sự kiện cho nút hoàn thành
+            ic1.addEventListener("click", ()=>{
+                ic1.classList.toggle("fa-regular");
+                ic1.classList.toggle("fa-circle");
+                ic1.classList.toggle("fa-circle-check");
+                ic1.classList.toggle("fa-solid");
+                p2.classList.toggle("cross");
+            })
+            // set sự kiện cho nút chỉnh sửa
+            var popupWindow = document.getElementById("popup-window");
+            var closeButton = document.getElementById("close-button");
+            ic2.addEventListener("click",()=>{
+                const abc = document.getElementById("overlay");
+                abc.style.display = "block";
+                    //event.preventDefault();
+                let a = (((event.target).parentElement).parentElement).parentElement;
+                let b = a.childNodes[1];
+
+                let screen_pop = document.getElementById("popup");
+
+                let h1 = document.createElement("h3");
+                let h1_nd = document.createTextNode("Tên to-do");
+                h1.setAttribute("class","h3_pre");
+                h1.appendChild(h1_nd);
+                screen_pop.appendChild(h1);
+
+                let int = document.createElement("input");
+                int.value = b.childNodes[0].innerText;
+                int.setAttribute("class","decor");
+                screen_pop.appendChild(int);
+
+                let h2 = document.createElement("h3");
+                let h2_nd = document.createTextNode("Mô tả to-do");
+                h2.setAttribute("class","h3_pre");
+                h2.appendChild(h2_nd);
+                screen_pop.appendChild(h2);
+
+                let int_mt = document.createElement("textarea");
+                int_mt.value = b.childNodes[1].innerText;
+                //int_mt.setAttribute('class',"decor");
+                int_mt.rows = "6";
+                int_mt.style.width ="200px";
+                int_mt.scrol;
+                int_mt.style.borderRadius ="10px";
+                screen_pop.appendChild(int_mt);
+
+                let btndiv = document.createElement("div");
+                btndiv.style.margin = "20px auto";
+                
+                let btn = document.createElement("button");
+                btn.setAttribute("class","bt");
+                let noidung = document.createTextNode("Xác nhận");
+                btn.appendChild(noidung);
+                btndiv.appendChild(btn);
+
+                let btn1 = document.createElement("button");
+                btn1.setAttribute("class","bt");
+                let noidung1 = document.createTextNode("Hủy");
+                btn1.appendChild(noidung1);
+                btndiv.appendChild(btn1);
+
+                screen_pop.append(btndiv);
+
+                btn1.addEventListener("click", ()=>{
+                    abc.style.display = "none";
+                })
+                
+                btn.addEventListener("click",()=>{
+                    let name_b = b.getElementsByClassName("ten_todo")[0].innerText;
+                    let index = list_todo.findIndex((todo)=>todo.name == name_b);
+                    let name_td = int.value;
+                    let dex_todo = int_mt.value;
+                    let new_todo = new todo(name_td,dex_todo);
+                    //console.log(index);
+                    list_todo.splice(index,1,new_todo);
+                    b.getElementsByClassName("ten_todo")[0].innerText = name_td;
+                    b.getElementsByClassName("motatask")[0].innerText = dex_todo;
+                    //console.log(list_todo);
+                    abc.style.display = "none";
+                    alert("Đã lưu thay đổi!!");
+                })
+                }   
+            )
+            // add sự kiện xóa cho nút delete
+            ic3.addEventListener("click",()=>{
+                if(confirm("Bạn muốn xóa to-do này thật sao?")){
+                    let b = (((event.target).parentElement).parentElement).parentElement;
+                    let c = b.children[1];
+                    let tam = c.getElementsByClassName("ten_todo")[0].innerText;
+                    let e = list_todo.findIndex((todo)=>todo.name == tam);
+                    list_todo.splice(e,1);
+                    console.log(e);
+                    console.log(list_todo);
+                    (b.parentElement).removeChild(b);
+                }else{
+                    alert("Cảm ơn bạn vì đã suy nghĩ lại!");
+                };
+            })
+        }
+        // nút thêm to-do list
+        document.getElementById("add").addEventListener("click", ()=>{
+            let ten = ten_int.value;
+            let mota  = mo_ta.value;
+            if (checkValue() == true){
+                del();
+                add(ten,mota);
+                // thêm sẵn dữ liệu để đẩy nhanh tốc độ test
+                //add("làm việc nhà","rửa chén, đổ rác, lau nhà");
+                //add("làm bài tập","js, đọc thêm sách nâng cao");
+                //add("làm project nhỏ","nghiên cứu tài liệu, viết sách");
+                //add("freelancer","đọc tài liệu, viết cv");
+            }
+        })
+    </script>
+    <script src="https://kit.fontawesome.com/5cd39fb918.js" crossorigin="anonymous"></script>
+</body>
+</html>
