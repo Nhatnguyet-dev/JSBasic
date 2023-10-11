@@ -57,7 +57,6 @@
     </video> -->
     
     <video id="vid" width="1024" height="576"  src="./T1.mp4"></video>
-    <video class="hide" id="vid1" width="1024" height="576"  src="./T1_2.mp4"></video>
     <ul class="nut">
         <li><button type="button" id="play_pause">Play/Pause <i class="fa-solid fa-play"></i></button></li>
         <li><button type="button" id="stop">Stop</button></li>
@@ -120,8 +119,7 @@
     })
 
     next_vid.addEventListener("click",()=>{
-        vid.classList.toggle("hide");
-        vid1.classList.toggle("hide");
+        vid.src = "./T1_2.mp4";
     })
 </script>
  <script src="https://kit.fontawesome.com/5cd39fb918.js" crossorigin="anonymous"></script>
