@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoom ảnh</title>
+</head>
+<style>
+    body{
+        height: 100vh;
+        margin: 0;
+    }
+    .container{
+        width: 80%;
+        margin: 0px auto;
+        text-align: center;
+        position: relative;
+        background-color: #908cb181;
+    }
+    #bigphoto{
+        width: 589px;
+        height: 732px;
+        margin: 0px auto;
+        /*thuộc tính này khiến cho ảnh xôm to ra nhưng không bị tràn ra khỏi block*/
+        overflow: hidden;
+    }
+    #bigphoto img{
+        transform-origin: center;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<body>
+    <div class="container">
+        <div id="bigphoto">
+            <img src="./photo/picall1.jpg" alt="">
+        </div>
+    </div>
+</body>
+<script>
+    const bigpt = document.getElementById("bigphoto");
+    const im = bigpt.children[0];
+    console.log(im);
+    im.addEventListener("mousemove",(event)=>{
+        const x = event.offsetX;
+        const y = event.offsetY;
+        const a = event.clientX;
+        const b = event.clientY;
+        console.log("client");
+        console.log(a," ",b);
+        console.log("offset");
+        console.log(x," ",y);
+        im.style.transformOrigin = `${x}px ${y}px`;
+        im.style.transform = "scale(2)";
+        //console.log("hover hover");
+    })
+    im.addEventListener("mouseout",()=>{
+        im.style.transform = "scale(1)";
+    })
+</script>
+</html>
