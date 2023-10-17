@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment</title>
+</head>
+<style>
+
+    @font-face {
+        font-family: ;
+        src: url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600&display=swap');
+    }
+    html{
+        font-family: 'Inter', sans-serif;
+        }
+    h3, h2{
+        font-family: 'Spectral', serif;
+    }
+    body{
+        width: 100%;
+        margin: auto;
+    }
+    .one{
+        display: flex;
+    }
+    .infor_khac{
+        grid-area: infor;
+        text-align: left;
+    }
+    .media{
+        grid-area: media;
+        width: 400px;
+    }
+    .media a{
+        margin-right: 12px;
+    }
+    footer{
+        background-color: #EAD0AD;
+        display: grid;
+        grid-template: 
+        'infor infor infor infor infor media';
+    }
+    footer.foot{
+        padding: 0px 200px;
+    }
+    li {
+        list-style: none;
+        margin-bottom: 10px;
+    }
+    li a{
+        text-decoration: none;
+        color: black;
+    }
+    li a:hover{
+        color: blue;
+    }
+    
+</style>
+<body>
+    <!-- 12 section -->
+    <section>
+        <div class="one">
+            <img src="./photo/Icons/truck.png" alt="">
+            <div class="infor">
+                <p style="font-weight: 500;">Giao hỏa tốc ĐÀ NẴNG</p>
+                <p>Nhận trong 1-4h (tùy địa điểm)</p>
+            </div>
+        </div>
+        <div class="one"></div>
+        <div class="one"></div>
+        <div class="one"></div>
+    </section>
+    <!-- footer -->
+    <footer class="foot">
+        <div class="infor_khac">
+            <h3>Thông tin khác</h3>
+            <li><a href="">Lịch sử</a></li>
+            <li><a href="">Chính sách</a></li>
+            <li><a href="">Điều kiện</a></li>
+            <li><a href="">Hỗ trợ</a></li>
+            <li><a href="">Liên lạc</a></li>
+        </div>
+        <div class="media">
+            <h2>Mạng xã hội</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia iusto possimus soluta odio amet a nam? Fuga dolores ullam
+                 hic et, quos aut ab dolore? Quidem nisi dolores dicta porro.</p>
+            <a href=""><img src="./photo/Facebook.png" alt=""></a>
+            <a href=""><img src="./photo/Instagram.png" alt=""></a>
+            <a href=""><img src="./photo/Twitter.png" alt=""></a>
+            <a href=""><img src="./photo/Pinterest.png" alt=""></a>
+        </div>
+    </footer>
+</body>
+<script>
+
+</script>
+<script src="https://kit.fontawesome.com/5cd39fb918.js" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+</html>

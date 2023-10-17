@@ -1,0 +1,258 @@
+
+/* fix lại đoạn effect content-> nó lỗi qué */
+.effect{
+    position: relative;
+    background-color: #143B29;
+    color: #F5E3CB;
+    padding: 0px 160px;
+    margin-bottom: 130px;
+    display: flex;
+    justify-content: left;
+    height: 528px;
+}
+.effect img.one{
+    position: absolute;
+    right: 160px;
+    bottom: -91px;
+}
+.effect .effect_content h3{
+    grid-column-end: span 2;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 80px;
+}
+.effect_1{
+    display: flex;
+    align-items: center;
+}
+.effect_content{
+    display: grid;
+    grid-template: auto/ auto auto;
+    gap: 10px;
+    margin-bottom:50px;
+    justify-content: space-between;
+}
+.best_sale{
+    margin: 0px 160px;
+    text-align: center;
+}
+.best_sale p{
+    margin-bottom: 0px;
+}
+.best_sale h1{
+    margin-top: 8px;
+    margin-bottom: 64px;
+}
+.list_product{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mini{
+    width: 256px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.detail{
+    margin: 136px 160px 127px 160px;
+    display: grid;
+    justify-content: space-between;
+    grid-template: 
+    'auto auto';
+}
+.pic{
+    width: 447px;
+    display: flex;
+    align-items: center;
+    
+    position: relative;
+}
+.pic img:nth-child(2){
+    position: absolute;
+    right: 0;
+}
+.content_detail{
+    width: 640px;
+    display: flex;
+    flex-direction: column; 
+}
+.content_detail div{
+    display: flex;
+    justify-content: space-between;
+}
+.content_detail h4{
+    align-self: end;
+}
+.content_detail p{
+    align-self: end;
+}
+.frame228{
+    padding: 180px 160px;
+    margin: 0;
+    background-color: #143B29;
+    color: #F5E3CB;
+    display: flex;
+    justify-content: space-between;
+}
+.flex-item{
+    align-self: center;
+}
+.flex-item h2{
+    margin-top: 2px;
+    margin-bottom: 30px;
+}
+.flex-item button{
+    margin-top: 30px;
+    padding:16px 30px;
+    background-color: #F5E3CB;
+    color: #143B29;
+}
+.flex-item button img{
+    margin-left: 10px;
+}
+.tam{
+    font-family: 'Spectral', serif;
+    font-size: 28px;
+    font-weight: 300;
+    margin: 0;
+}
+.product{
+    width: 328px;
+    height: 556px;
+    background-color: #FFFFFF;
+    text-align: center;
+}
+.name{
+    font-family: 'Spectral', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #333333;
+}
+.collector{
+    margin: 0px 64px;
+    margin-bottom: 180px;
+    margin-top: 168px;
+    height: 496px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+img:nth-child(3){
+    align-self: flex-end;
+}
+img:nth-child(4){
+    align-self: flex-start;
+}
+.collector div{
+    width: 192px;
+}
+.collector div img{
+    margin-bottom: 15px;
+}
+.frame232{
+    margin: 0px 160px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.content_mui button{
+    background-color: #143B29;
+    padding:16px 30px;
+    color: #FDF9F3;
+}
+button img{
+    vertical-align: bottom;
+}
+.frame234{
+    height: 510px;
+    display: grid;
+    justify-content: space-between;
+    grid-template:auto / auto auto;
+    margin: 0px 160px;
+    margin-top: 90px;
+    height: 543px;
+}
+.frame234 h4{
+    margin-top: 0;
+    margin-bottom: 6px;
+}
+.frame234 h1{
+    margin-top: 2px;
+    margin-bottom: 20px;
+}
+.reaction{
+    display: flex;
+    position: relative;
+}
+.reaction img{
+    position: absolute;
+    left: -46px;
+    top: 9px;
+}
+.reaction svg{
+    position: absolute;
+    left: -55px;
+}
+.content{
+    width: 352px;
+    padding: 75px;
+    margin-top: 67px;
+    background-color: #FFFFFF;
+}
+.content p{
+    margin: 0;
+}
+.content p.body{
+    margin-bottom: 14px;
+}
+hr{
+    width: 1120px;
+    margin-top: 27px;
+    margin-bottom: 57px;
+}
+.item{
+    display: flex;
+    justify-content: baseline;
+}
+.item img{
+    width: 70px;
+    height: 70px;
+}
+.frame24{
+    margin-left: 28px;
+}
+.frame240{
+    display: grid;
+    justify-content: space-between;
+    grid-template: 
+    'auto auto'
+    'auto auto'; 
+    margin: 0px 160px;
+    margin-bottom: 100px;
+}
+footer.foot{
+    padding: 102px 256px 102px 160px  ;
+    background-color: #EBD0AD;
+    display: grid;
+    grid-template:
+    auto / auto auto;
+    justify-content: space-between;
+}
+li{
+    list-style: none;
+    margin-bottom: 10px;
+}
+li a{
+    text-decoration: none;
+    color: #424242;
+}
+.media img{
+    margin-right: 12px;
+    width: 36px;
+    height: 36px;
+}
+.frame18 p{
+    width: 352px;
+}
