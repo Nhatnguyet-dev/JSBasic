@@ -6,64 +6,95 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
-
-    body{
-        margin: 0;
-        width: 100%;
-        background-color: #FDF9F3;
-    }
-    .title{
-        font-family: 'Inter', sans-serif;
-        font-weight: 500;
-        font-size: 20px;
-    }
-    .body{
-        font-family: 'Inter', sans-serif;
-        font-size: 20px;
-        font-weight: 300;
-    }
-    
-    .body_2{
-        font-family: 'Inter', sans-serif;
-        font-size: 16px;
-        font-weight: 300;
-    }
-    h1{
-        font-family: 'Spectral', serif;
-        font-size: 64px;
-        font-weight: 700;
-        line-height: 120%; /* 76.8px */
-        letter-spacing: -0.64px;
-    }
-    h2{
-        font-family: 'Spectral', serif;
-        font-size: 48px;
-        font-weight: 700;
-        letter-spacing: -0.24px;
-    }
-    h3{
-        font-family: 'Spectral', serif;
-        font-weight: 500;
-        font-size: 36px;
-    }
-    h4{
-        font-family: 'Spectral', serif;
-        font-size: 28px;
-        font-weight: 700;
-    }
-    
-    p{
-        font-family: 'Inter', sans-serif;
-        font-weight: 300;
-    }
-    
-</style>
 <body>
+    <header class="head">
+        <img src="./photo/logo.svg" alt="">
+        <nav>
+           <li>Trang chủ</li>
+           <li>Sản phẩm</li>
+           <li>Thông tin
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
+                <path d="M1.12793 0.5L6.12793 5.5L11.1279 0.5" stroke="#424242"/>
+                </svg>
+                <ul class="drop_menu">
+                    <li>Về chúng tôi</li>
+                    <li>Câu hỏi</li>
+                </ul>
+           </li>
+           <li>Tin tức</li>
+           <li>Liên hệ</li> 
+        </nav>
+        <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                <path d="M2.75586 4.25C2.75586 3.83579 3.09165 3.5 3.50586 3.5H4.06412C5.01459 3.5 5.58368 4.13899 5.90911 4.73299C6.12602 5.12894 6.28294 5.58818 6.40568 6.00395C6.43892 6.00134 6.4726 6 6.50666 6H19.004C19.8342 6 20.4337 6.79442 20.2061 7.5928L18.3783 14.0019C18.0415 15.1832 16.9621 15.9978 15.7338 15.9978H9.78563C8.54714 15.9978 7.46146 15.1699 7.13369 13.9756L6.3732 11.2045L5.1146 6.95578L5.11256 6.94834C4.95686 6.38051 4.81073 5.85005 4.59359 5.4537C4.38272 5.0688 4.21463 5 4.06412 5H3.50586C3.09165 5 2.75586 4.66421 2.75586 4.25ZM7.82869 10.8403L8.5802 13.5786C8.72919 14.1215 9.22268 14.4978 9.78563 14.4978H15.7338C16.2921 14.4978 16.7827 14.1275 16.9359 13.5906L18.6727 7.5H6.84135L7.81492 10.7868C7.8202 10.8046 7.82478 10.8224 7.82869 10.8403ZM11.2559 19C11.2559 20.1046 10.3605 21 9.25586 21C8.15129 21 7.25586 20.1046 7.25586 19C7.25586 17.8954 8.15129 17 9.25586 17C10.3605 17 11.2559 17.8954 11.2559 19ZM9.75586 19C9.75586 18.7239 9.532 18.5 9.25586 18.5C8.97972 18.5 8.75586 18.7239 8.75586 19C8.75586 19.2761 8.97972 19.5 9.25586 19.5C9.532 19.5 9.75586 19.2761 9.75586 19ZM18.2559 19C18.2559 20.1046 17.3605 21 16.2559 21C15.1513 21 14.2559 20.1046 14.2559 19C14.2559 17.8954 15.1513 17 16.2559 17C17.3605 17 18.2559 17.8954 18.2559 19ZM16.7559 19C16.7559 18.7239 16.532 18.5 16.2559 18.5C15.9798 18.5 15.7559 18.7239 15.7559 19C15.7559 19.2761 15.9798 19.5 16.2559 19.5C16.532 19.5 16.7559 19.2761 16.7559 19Z" fill="#424242"/>
+              </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
+                <path d="M8.12793 9C10.337 9 12.1279 7.20914 12.1279 5C12.1279 2.79086 10.337 1 8.12793 1C5.91879 1 4.12793 2.79086 4.12793 5C4.12793 7.20914 5.91879 9 8.12793 9Z" stroke="#424242" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14.9999 16.9999C14.9999 13.9039 11.9199 11.3999 8.12785 11.3999C4.33586 11.3999 1.25586 13.9039 1.25586 16.9999" stroke="#424242" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M8.33317 2.29175C11.6699 2.29175 14.3748 4.9967 14.3748 8.33341C14.3748 9.77666 13.8688 11.1017 13.0244 12.1407L17.1084 16.2248C17.3525 16.4689 17.3525 16.8646 17.1084 17.1087C16.8866 17.3306 16.5393 17.3507 16.2947 17.1692L16.2246 17.1087L12.1405 13.0247C11.1014 13.869 9.77642 14.3751 8.33317 14.3751C4.99645 14.3751 2.2915 11.6702 2.2915 8.33341C2.2915 4.9967 4.99645 2.29175 8.33317 2.29175ZM8.33317 3.54175C5.6868 3.54175 3.5415 5.68705 3.5415 8.33341C3.5415 10.9797 5.6868 13.1251 8.33317 13.1251C10.9795 13.1251 13.1248 10.9797 13.1248 8.33341C13.1248 5.68705 10.9795 3.54175 8.33317 3.54175Z" fill="#424242"/>
+              </svg>
+        </div>
+    </header>
+    <!-- không được phép đặt dấu # trong tên của file in html -->
+    <div id="slide">
+        <img src="./photo/Slide1.png" alt=" chưa có hình sao">
+        <div class="scoll">
+            <i class="fa-solid fa-circle"></i>
+            <i class="fa-regular fa-circle"></i>
+            <i class="fa-regular fa-circle"></i>
+            <i class="fa-regular fa-circle"></i>
+            <i class="fa-regular fa-circle"></i>
+            <i class="fa-regular fa-circle"></i>
+        </div>
+    </div>
     <div class="pr_singer">
-
+        <div class="flex_1">
+            <p class="thought">Tôi nghĩ rằng <b>hương thơm</b> là tất cả <br/>
+                về <b>cảm giác và hình ảnh</b> , và<br/> có thể gợi lên <b>tầm nhìn, cảm xúc</b> <br/> và <b>suy nghĩ</b> </p>
+            <div class="infor_singer">
+                <img src="./photo/Shakira.png" alt="">
+                <img src="./photo/Line 2.png" alt="">
+                <div>
+                    <p class="title">Shakira</p>
+                    <p class="body">Singer, sing writer</p>
+                </div>
+            </div>
+        </div>
+        <div class="flex_2">            
+            <img src="./photo/Frame.png" alt="">
+            <img src="./photo/Layer 1 1.png" alt="">
+        </div>
+        <div class="flex_3">
+            <img src="./photo/Frame-1.png" alt="">
+            <p class="body">Lörem ipsum lat anime odade autorat så betårta. Melingar eurode etelig par röplarat. 
+                Koldioxidbanta rövådade makros belor. Svajpa mena teraktiga. 
+                </p>
+        </div>
+    </div>
+    <div class="demo_product">
+        <div class="medium">
+            <img src="./photo/product1.png" alt="">
+            <div class="infor">
+                <p class="name">Tinh Dầu Bạc Hà</p>
+                <p class="body_2" style="color: #424242;">129,000 VNĐ</p>
+            </div>
+        </div>
+        <div class="medium">
+            <img src="./photo/product1.png" alt="">
+            <div class="infor">
+                <p class="name">Tinh Dầu Bạc Hà</p>
+                <p class="body_2" style="color: #424242;">129,000 VNĐ</p>
+            </div>
+        </div>
+        <div class="medium">
+            <img src="./photo/product1.png" alt="">
+            <div class="infor">
+                <p class="name">Tinh Dầu Bạc Hà</p>
+                <p class="body_2" style="color: #424242;">129,000 VNĐ</p>
+            </div>
+        </div>
     </div>
 
     <div class="effect">
@@ -104,29 +135,29 @@
         <p class="title">Popular Products</p>
         <h1>Bán chạy</h1>
         <div class="list_product">
-            <div class="mini product">
-                <img class="mini" src="./photo/product1.png" alt="">
+            <div class="mini">
+                <img src="./photo/product1.png" alt="">
                 <div class="infor">
                     <p class="name">Tinh Dầu Bạc Hà</p>
                     <p class="body_2" style="color: #424242;">129,000 VNĐ</p>
                 </div>
             </div>
-            <div class="mini product">
-                <img class="mini" src="./photo/product1.png" alt="">
+            <div class="mini">
+                <img src="./photo/product1.png" alt="">
                 <div class="infor">
                     <p class="name">Tinh Dầu Bạc Hà</p>
                     <p class="body_2" style="color: #424242;">129,000 VNĐ</p>
                 </div>
             </div>
-            <div class="mini product">
-                <img class="mini" src="./photo/product1.png" alt="">
+            <div class="mini">
+                <img src="./photo/product1.png" alt="">
                 <div class="infor">
                     <p class="name">Tinh Dầu Bạc Hà</p>
                     <p class="body_2" style="color: #424242;">129,000 VNĐ</p>
                 </div>
             </div>
-            <div class="mini product">
-                <img class="mini" src="./photo/product1.png" alt="">
+            <div class="mini">
+                <img src="./photo/product1.png" alt="">
                 <div class="infor">
                     <p class="name">Tinh Dầu Bạc Hà</p>
                     <p class="body_2" style="color: #424242;">129,000 VNĐ</p>
@@ -277,9 +308,11 @@
     </footer>
 </body>
 <script>
+    // event cho slider
     // event cho button xem ngay
     // event hover cho collector ảnh
     // event cho button khám phá ngay
     // thêm phần event cho việc wheel lướt xuống thì thay đổi content của reaction
 </script>
+<script src="https://kit.fontawesome.com/5cd39fb918.js" crossorigin="anonymous"></script>
 </html>
