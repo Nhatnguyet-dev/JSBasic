@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm mới</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital@0;1&display=swap');
+    .new_product{
+        background-image: url(./photo/bg6.png);
+        height: 100vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .product{
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin-bottom: 50px;
+        margin-left: 106px;
+    }
+    .product ._1{
+        position: absolute;
+        left: 0;
+    }
+    .new_product .product:nth-child(2){
+        justify-self: flex-start;
+    }
+    .product_2{
+        align-self: flex-end;
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin-bottom: 50px;
+        margin-right: 106px;
+    }
+    .product_2 ._1{
+        position: absolute;
+        right: 0;
+    }
+    .price{
+        font-family: Courier;
+        font-size: 36px;
+        color: #FFF;
+        margin-bottom: 20px;
+        margin-left: 100px;
+    }
+    .money{
+        position: absolute;
+        left: 230px;
+        top:10px;
+    }
+    .money_2{
+        position: absolute;
+        right: 230px;
+        top:10px;
+    }
+</style>
+<body>
+    <section class="new_product">
+        <div class="product">
+            <img class="_2" src="./photo/Rect2.png" alt="">
+            <img class="_1" src="./photo/1 1.png" alt="">
+            <div class="money">
+                <img src="./photo/vina-cano phở 1.png" alt="">
+                <p class="price">35.000Đ</p>    
+            </div>
+        </div>
+        <div class="product_2">
+            <img class="_2" src="./photo/Rect3.png" alt="">
+            <img class="_1" src="./photo/2 1.png" alt="">
+            <div class="money_2">
+                <img src="./photo/cà phê phở kèm kem.png" alt="">
+                <p class="price">45.000Đ</p>    
+            </div>
+        </div>
+        <div class="product">
+            <img class="_2" src="./photo/Rect2.png" alt="">
+            <img class="_1" src="./photo/3 1.png" alt="">
+            <div class="money">
+                <img src="./photo/cà phê nâu phở.png" alt="">
+                <p class="price">45.000Đ</p>    
+            </div>
+        </div>
+    </section>
+</body>
+</html>

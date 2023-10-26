@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Mới</title>
+</head>
+<style>
+    body{
+        margin: 0px;
+    }
+    .logo_detail{
+        background-image: url(./photo/bg3.png);
+        height: 100vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        
+    }
+    .sect2{
+        background-image: url(./photo/bg4.png);
+        height: 512px;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        position: relative;
+    }
+    .item_1{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .item_1 img{
+        margin-bottom: 30px;
+    }
+    .item_1 img:first-child{
+        margin-bottom: 53px;
+    }
+    .item_1 img:nth-last-child(){
+        margin-bottom: 0px;
+    }
+    .item_2{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .item_2 img:first-child{
+        margin-bottom: 40px;
+    }
+    .logo_float{
+        position: absolute;
+        top: -41px;
+        left: 0;
+    }
+</style>
+<body>
+    <section class="logo_detail">
+        <div class="sect2">
+            <div class="item_1">
+                <img src="./photo/CONG_CA_PHE.png" alt="">
+                <img src="./photo/• Đổi mới 1.png" alt="">
+                <img src="./photo/• Cải tiến 1.png" alt="">
+                <img src="./photo/• Tân thời 1.png" alt="">
+            </div>
+            <div class="item_2">
+                <img src="./photo/logo@3x 1.png" alt="">
+                <img src="./photo/SỰ KIỆN GIÁNG SINH 1.png" alt="">
+            </div>
+            <img class="logo_float" src="./photo/Group 4.png" alt="">
+        </div>
+    </section>
+</body>
+</html>
